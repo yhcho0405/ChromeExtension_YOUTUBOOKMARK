@@ -21,7 +21,9 @@ chrome.tabs.executeScript({
 
   var timeParameter = bodyTimeFin.replace(':', 'm');
 
-  togglePlay();
+  var cart_wrapper = document.getElementsByClassName("style-scope yt-img-shadow");
 
-  document.querySelector('#user').innerText = timeParameter;
+
+  togglePlay();
+  document.querySelector('#user').innerText = result[0];
 });

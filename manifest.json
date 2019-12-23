@@ -8,6 +8,22 @@
     "tabs",
     "storage"
   ],
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.youtube.com/*",
+        "https://www.youtube.com/*"
+      ],
+      "js": ["script.js"]
+    },
+    {
+      "matches": [
+        "https://apis.google.com/*"
+      ],
+      "all_frames": true,
+      "js": ["script.js"]
+    }
+  ],
   "browser_action": {
     "default_icon": "icon_16.png",
     "default_popup": "popup.html"
