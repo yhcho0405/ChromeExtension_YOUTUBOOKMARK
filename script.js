@@ -1,10 +1,10 @@
-function togglePlay() {
-  var v = document.querySelector('video');
-
-  if (v == null) return;
-
-  (v.paused) ? v.play() : v.pause();
-}
+//profile
+chrome.tabs.executeScript({
+  code:'jQuery("#img").attr("src");'
+}, function(sourceProfile){
+  alert(sourceProfile);
+});
+//time
 chrome.tabs.executeScript({
   code:'document.querySelector("body").innerText;'
 }, function(result){
@@ -21,9 +21,5 @@ chrome.tabs.executeScript({
 
   var timeParameter = bodyTimeFin.replace(':', 'm');
 
-  var cart_wrapper = document.getElementsByClassName("style-scope yt-img-shadow");
-
-
-  togglePlay();
   document.querySelector('#user').innerText = result[0];
 });
