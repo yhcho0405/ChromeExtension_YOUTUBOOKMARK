@@ -16,6 +16,12 @@ chrome.tabs.executeScript({
   var bodyTimeFin = textFin[2] + "s";
   var timeParameter = bodyTimeFin.replace(':', 'm');
 
+  chrome.tabs.executeScript({
+    code: '$(document).find("yt-formatted-string").text();'
+  }, function(videoTitle) {
+    alert(videoTitle);
+  });
+
   chrome.tabs.query({
     'active': true,
     'lastFocusedWindow': true,
@@ -26,13 +32,3 @@ chrome.tabs.executeScript({
     document.querySelector('#user').innerText = linkFin;
   });
 });
-
-
-
-//url
-
-//document.querySelector('#user').innerText = ;
-
-
-//var linkFin ="https://youtu.be/"+ +"?t="+timeParameter;
-//alert(linkFin);

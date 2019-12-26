@@ -31,6 +31,11 @@
       color: white;
     }
 
+    h1 {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 200;
+    }
+
     h2 {
       color: white;
     }
@@ -40,11 +45,13 @@
       height: 500px;
       text-align: center;
       vertical-align: middle;
-      background-color: black;
+      background-color: white;
+      margin: 0;
+      padding: 0;
     }
 
     .wrap {
-      height: 100%;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -67,8 +74,30 @@
       cursor: pointer;
       outline: none;
     }
-
+    .button1 {
+      width: 110px;
+      height: 30px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      font-weight: 500;
+      color: #000;
+      background-color: #fff;
+      border: none;
+      border-radius: 45px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease 0s;
+      cursor: pointer;
+      outline: none;
+    }
     .button:hover {
+      background-color: #2EE59D;
+      box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+      color: #fff;
+      transform: translateY(-7px);
+    }
+    .button1:hover {
       background-color: #2EE59D;
       box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
       color: #fff;
@@ -76,10 +105,12 @@
     }
   </style>
 </head>
-
 <body>
+  <h1>YOUTUBOOKMARK</h1>
   <div class="wrap">
     <button class="button">BOOKMARKING!</button>
+    <pre>
+    <button class="button1">DELETE ALL</button>
   </div>
   <div id="user"></div>
   <script src="thumbnail.js"></script>
