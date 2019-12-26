@@ -26,9 +26,25 @@
       height: 0px;
       background: #f1ef79;
     }
-
+    #title {
+      color: black;
+      font-family: 'Roboto', sans-serif;
+    }
     #user {
       color: black;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .div1 {
+      background-color: white;
+    }
+
+    .div2 {
+      background-color: white;
+    }
+
+    .div3 {
+      background-color: white;
     }
 
     h1 {
@@ -106,16 +122,22 @@
   </style>
 </head>
 <body>
-  <h1>YOUTUBOOKMARK</h1>
-  <div class="wrap">
-    <button class="button">BOOKMARKING!</button>
-
-    <button class="button">DELETE ALL</button>
+  <div class="div1">
+    <h1>YOUTUBOOKMARK</h1>
   </div>
-  <div id="title"></div>
-  <div id="user"></div>
-  <script src="thumbnail.js"></script>
-  <iframe scrolling="no" id="thumb1" width='120' height='90' src="" frameborder='0' allowfullscreen></iframe>
+  <div class="div2">
+    <div class="wrap">
+      <button class="button">BOOKMARKING!</button>
+
+      <button class="button">DELETE ALL</button>
+    </div>
+  </div>
+  <div class="div3">
+    <div id="title"></div>
+    <div id="user"></div>
+    <script src="thumbnail.js"></script>
+    <iframe scrolling="no" id="thumb1" width='120' height='90' src="" frameborder='0' allowfullscreen></iframe>
+  </div>
   <script src="jQuery.js"></script>
   <script src="script.js"></script>
 </body>

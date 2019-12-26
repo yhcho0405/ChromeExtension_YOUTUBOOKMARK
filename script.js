@@ -19,7 +19,9 @@ chrome.tabs.executeScript({
   chrome.tabs.executeScript({
     code: 'document.querySelector("head").querySelector("title").innerText;'
   }, function(videoTitle) {
-    document.querySelector('#title').innerText = videoTitle;
+    strTitle = videoTitle.toString();
+    titleFin = strTitle.substring(0, strTitle.length - 10);
+    document.querySelector('#title').innerText = titleFin;
   });
 
   chrome.tabs.query({
