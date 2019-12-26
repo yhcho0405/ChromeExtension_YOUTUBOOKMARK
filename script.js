@@ -13,13 +13,13 @@ chrome.tabs.executeScript({
   var bodySep = bodyText.split(' ');
   var bodyTime = bodySep[1];
   var textFin = bodyTime.split('\n');
-  var bodyTimeFin = textFin[2] + "s";
+  var bodyTimeFin = textFin[1] + "s";
   var timeParameter = bodyTimeFin.replace(':', 'm');
 
   chrome.tabs.executeScript({
-    code: '$(document).find("yt-formatted-string").text();'
+    code: 'document.querySelector("head").querySelector("title").innerText;'
   }, function(videoTitle) {
-    alert(videoTitle);
+    document.querySelector('#title').innerText = videoTitle;
   });
 
   chrome.tabs.query({
@@ -32,3 +32,11 @@ chrome.tabs.executeScript({
     document.querySelector('#user').innerText = linkFin;
   });
 });
+
+
+
+//chrome.tabs.executeScript({
+//  code: '$(document).find("yt-formatted-string").text();'
+//}, function(videoTitle) {
+//  alert(videoTitle);
+//});
