@@ -1,57 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <style>
-      body{
-        width : 400px;
-        height: 400px;
-        text-align : center;
-        vertical-align : middle;
-      }
-      button{
-        background:#1AAB8A;
-        color:#fff;
-        border:none;
-        position:relative;
-        height:35px;
-        font-size:1.2em;
-        padding:0 2em;
-        cursor:pointer;
-        transition:800ms ease all;
-        outline:none;
-      }
-      button:hover{
-        background:#fff;
-        color:#1AAB8A;
-      }
-      button:before,button:after{
-        content:'';
-        position:absolute;
-        top:0;
-        right:0;
-        height:2px;
-        width:0;
-        background: #1AAB8A;
-        transition:400ms ease all;
-      }
-      button:after{
-        right:inherit;
-        top:inherit;
-        left:0;
-        bottom:0;
-      }
-      button:hover:before,button:hover:after{
-        width:100%;
-        transition:800ms ease all;
-      }
-    </style>
-  </head>
-  <body>
-    <h2><strong>yhcho0405</strong></h2>
-    <div id="user"></div>
-    <button id="btn1">Bookmarking!</button>
-    <div id="user1"></div>
-    <script src="jQuery.js"></script>
-    <script src="script.js"></script>
-  </body>
+<head>
+  <style>
+    body {
+      width: 400px;
+      height: 400px;
+      text-align: center;
+      vertical-align: middle;
+    }
+
+    button {
+      background: #1AAB8A;
+      color: #fff;
+      border: none;
+      position: relative;
+      height: 35px;
+      font-size: 1.2em;
+      padding: 0 2em;
+      cursor: pointer;
+      transition: 800ms ease all;
+      outline: none;
+    }
+
+    button:hover {
+      background: #fff;
+      color: #1AAB8A;
+    }
+
+    button:before,
+    button:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 2px;
+      width: 0;
+      background: #1AAB8A;
+      transition: 400ms ease all;
+    }
+
+    button:after {
+      right: inherit;
+      top: inherit;
+      left: 0;
+      bottom: 0;
+    }
+
+    button:hover:before,
+    button:hover:after {
+      width: 100%;
+      transition: 800ms ease all;
+    }
+  </style>
+</head>
+
+<body>
+  <h2><strong>yhcho0405</strong></h2>
+  <div id="user"></div>
+  <button id="btn1">Bookmarking!</button>
+  <div id="user1"></div>
+  <script src="jQuery.js"></script>
+  <script src="script.js"></script>
+  <script>
+    $.ajax({
+        method: "POST",
+        url: "some.php",
+        data: {
+          name: "John",
+          location: "Boston"
+        }
+      })
+      .done(function(msg) {
+        alert("Data Saved: " + msg);
+      });
+  </script>
+</body>
+
 </html>
