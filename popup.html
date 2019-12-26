@@ -57,23 +57,11 @@
 <body>
   <h2><strong>yhcho0405</strong></h2>
   <div id="user"></div>
+  <script src="thumbnail.js"></script>
+  <iframe id="thumb1" width='177' height='90' src="" frameborder='0' allowfullscreen></iframe>
   <button id="btn1">Bookmarking!</button>
-  <div id="user1"></div>
   <script src="jQuery.js"></script>
   <script src="script.js"></script>
-  <script>
-    $.ajax({
-        method: "POST",
-        url: "some.php",
-        data: {
-          name: "John",
-          location: "Boston"
-        }
-      })
-      .done(function(msg) {
-        alert("Data Saved: " + msg);
-      });
-  </script>
 </body>
 
 </html>
