@@ -1,9 +1,3 @@
-//profile
-chrome.tabs.executeScript({
-  code: 'jQuery("#img").attr("src");'
-}, function(sourceProfile) {
-  //alert(sourceProfile);
-});
 
 //time
 chrome.tabs.executeScript({
@@ -13,15 +7,36 @@ chrome.tabs.executeScript({
   var bodySep = bodyText.split(' ');
   var bodyTime = bodySep[1];
   var textFin = bodyTime.split('\n');
-  var bodyTimeFin = textFin[1] + "s";
-  var timeParameter = bodyTimeFin.replace(':', 'm');
-
+  var bodyTimeFin1 = textFin[1] + "s";
+  var bodyTimeFin2 = textFin[2] + "s";
+  var timeParameter1 = bodyTimeFin1.replace(':', 'm');
+  var timeParameter2 = bodyTimeFin2.replace(':', 'm');
+  if(timeParameter1.length == 5 && bodyTimeFin1.indexOf(":") != -1) {
+    timeParameter = timeParameter1;
+    alert("c1");
+  }
+  else if(timeParameter2.length == 5 && bodyTimeFin2.indexOf(":") != -1) {
+    timeParameter = timeParameter2;
+    alert("c2");
+  }
+  else {
+    alert("error! code: 01 \n(Please send an email to yhcho0405@kakao.com)");
+  }
   chrome.tabs.executeScript({
     code: 'document.querySelector("head").querySelector("title").innerText;'
   }, function(videoTitle) {
-    strTitle = videoTitle.toString();
-    titleFin = strTitle.substring(0, strTitle.length - 10);
-    document.querySelector('#title').innerText = titleFin;
+    chrome.tabs.executeScript({
+      code: 'document.querySelector("#notification-count").innerText;'
+    }, function(notiCount) {
+      strTitle = videoTitle.toString();
+      if(notiCount == 0) {
+        titleFin = strTitle.substring(0, strTitle.length - 10);
+      }
+      else {
+        titleFin = strTitle.substring(0, strTitle.length - 10); //알림 확인 후.
+      }
+      document.querySelector('#title').innerText = titleFin;
+    });
   });
 
   chrome.tabs.query({
