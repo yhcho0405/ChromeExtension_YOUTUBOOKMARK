@@ -4,15 +4,15 @@
 <head>
   <style>
     ::-webkit-scrollbar {
-      width: 12px;
+      width: 8px;
     }
 
     ::-webkit-scrollbar-track {
-      background-color: black;
+      background-color: white;
     }
 
     ::-webkit-scrollbar-thumb {
-      background-color: #CEF6F5;
+      background-color: #2EE59D;
       border-radius: 10px;
     }
 
@@ -24,13 +24,14 @@
     ::-webkit-scrollbar-button:end:increment {
       width: 0px;
       height: 0px;
-      background: #f1ef79;
     }
+
     #title {
       color: black;
       font-family: 'Roboto', sans-serif;
     }
-    #user {
+
+    #link {
       color: black;
       font-family: 'Roboto', sans-serif;
     }
@@ -105,6 +106,7 @@
       cursor: pointer;
       outline: none;
     }
+
     .button1 {
       width: 110px;
       height: 30px;
@@ -122,12 +124,14 @@
       cursor: pointer;
       outline: none;
     }
+
     .button:hover {
       background-color: #2EE59D;
       box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
       color: #fff;
       transform: translateY(-7px);
     }
+
     .button1:hover {
       background-color: #E0004A;
       box-shadow: 0px 15px 20px rgba(224, 0, 74, 0.4);
@@ -136,8 +140,9 @@
     }
   </style>
 </head>
+
 <body>
-  <script src = "exception.js"></script>
+  <script src="exception.js"></script>
   <div class="div1">
     <h1>YOUTUBOOK<strong style="font-weight: 500;">MARK</strong></h1>
   </div>
@@ -149,18 +154,21 @@
   </div>
   <div class="div2">
     <div class="wrap">
-      <button id= "btn1" onclick="clickFunction()" class="button">BOOKMARKING!</button>
-      <button id= "btn2" class="button1">DELETE ALL</button>
+      <input type="button" id="btn1" class="button" value="BOOKMARKING!">
+      <input type="button" id="btn2" class="button1" value="DELETE ALL">
     </div>
   </div>
   <div class="div3">
     <div id="title"></div>
-    <div id="user"></div>
+    <div id="link"></div>
     <script src="thumbnail.js"></script>
     <iframe scrolling="no" id="thumb1" width='120' height='90' src="" frameborder='0' allowfullscreen></iframe>
   </div>
+  <div id="bmkHistory"></div>
   <script src="jQuery.js"></script>
   <script src="script.js"></script>
   <script src="subexception.js"></script>
+  <script src="clickEvent.js"></script>
 </body>
+
 </html>
