@@ -57,6 +57,11 @@
       font-family: 'Roboto', sans-serif;
     }
 
+    .div6 {
+      color: red;
+      font-family: 'Roboto', sans-serif;
+    }
+
     h1 {
       font-family: 'Roboto', sans-serif;
       font-weight: 200;
@@ -109,7 +114,7 @@
       letter-spacing: 2.5px;
       font-weight: 500;
       color: #000;
-      background-color: #fff;
+      background-color: #FAFAFA;
       border: none;
       border-radius: 45px;
       box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
@@ -124,8 +129,8 @@
       transform: translateY(-7px);
     }
     .button1:hover {
-      background-color: #2EE59D;
-      box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+      background-color: #E0004A;
+      box-shadow: 0px 15px 20px rgba(224, 0, 74, 0.4);
       color: #fff;
       transform: translateY(-7px);
     }
@@ -139,10 +144,13 @@
   <div class="div5">
     Only works on YouTube.
   </div>
+  <div class="div6">
+    Please use after playing video.
+  </div>
   <div class="div2">
     <div class="wrap">
-      <button id= "btn1" class="button">BOOKMARKING!</button>
-      <button class="button">DELETE ALL</button>
+      <button id= "btn1" onclick="clickFunction()" class="button">BOOKMARKING!</button>
+      <button id= "btn2" class="button1">DELETE ALL</button>
     </div>
   </div>
   <div class="div3">
@@ -153,6 +161,6 @@
   </div>
   <script src="jQuery.js"></script>
   <script src="script.js"></script>
-  <script src ="subexception.js"></script>
+  <script src="subexception.js"></script>
 </body>
 </html>
