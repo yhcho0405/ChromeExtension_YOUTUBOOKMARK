@@ -18,8 +18,15 @@ if (inYoutube) {
       var textFin = bodyTime.split('\n');
       var bodyTimeFin1 = textFin[1] + "s";
       var bodyTimeFin2 = textFin[2] + "s";
+      alert(textFin[1]);
       var timeParameter1 = bodyTimeFin1.replace(':', 'm');
       var timeParameter2 = bodyTimeFin2.replace(':', 'm');
+      if(timeParameter1.indexOf(":") != -1 || timeParameter2.indexOf(":") != -1) {
+        timeParameter1 = timeParameter1.replace('m', 'h');
+        timeParameter2 = timeParameter2.replace('m', 'h');
+        timeParameter1 = timeParameter1.replace(':', 'm');
+        timeParameter2 = timeParameter2.replace(':', 'm');
+      }
       if (bodyTimeFin1.indexOf(":") != -1) {
         timeParameter = timeParameter1;
       } else if (bodyTimeFin2.indexOf(":") != -1) {

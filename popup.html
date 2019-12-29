@@ -3,6 +3,8 @@
 
 <head>
   <style>
+    @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding&display=swap');
+
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -27,12 +29,14 @@
     }
 
     #title {
-      color: red;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Nanum Gothic Coding', 'Roboto', sans-serif;
+      line-height: 16px;
+      font-size: 14px;
       max-width: 200px;
-      max-height: 68px;
+      max-height: 32px;
       text-align: left;
       display:inline-block;
+      overflow: hidden;
     }
 
     #link {
@@ -41,7 +45,7 @@
     }
 
     #divv {
-      min-height: 80px;
+      min-height: 83px;
     }
 
     #wrapper {
@@ -88,6 +92,11 @@
       text-decoration:none;
     }
 
+    a:link {text-decoration: none; color: black;}
+    a:visited {text-decoration: none; color: black;}
+    a:active {text-decoration: none; color: black;}
+    a:hover {text-decoration: underline; color: black;}
+
     h1 {
       font-family: 'Roboto', sans-serif;
       font-weight: 200;
@@ -105,6 +114,10 @@
       background-color: white;
       margin: 0;
       padding: 0;
+    }
+
+    .btnmargin {
+      height: 20px;
     }
 
     .wrap {
@@ -155,14 +168,14 @@
       background-color: #2EE59D;
       box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
       color: #fff;
-      transform: translateY(-7px);
+      transform: translateY(-3px);
     }
 
     .button1:hover {
       background-color: #E0004A;
       box-shadow: 0px 15px 20px rgba(224, 0, 74, 0.4);
       color: #fff;
-      transform: translateY(-7px);
+      transform: translateY(-3px);
     }
   </style>
 </head>
@@ -171,7 +184,7 @@
   <script src="test.js"></script>
   <script src="exception.js"></script>
   <div class="div1">
-    <h1>YOUTUBOOK<strong style="font-weight: 500;">MARK</strong></h1>
+    <h1>YOUTUBOOK<strong style="font-weight: 500;">MARK</strong>&trade;</h1>
   </div>
   <div class="div5">
     Only works on YouTube.
@@ -184,6 +197,7 @@
       <input type="button" id="btn1" class="button" value="BOOKMARKING!">
       <input type="button" id="btn2" class="button1" value="DELETE ALL">
     </div>
+    <div class="btnmargin"></div>
   </div>
   <div id="bmkHistory"></div>
   <script src="jQuery.js"></script>
