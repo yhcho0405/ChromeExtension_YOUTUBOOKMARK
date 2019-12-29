@@ -25,7 +25,7 @@ if (inYoutube) {
       } else if (bodyTimeFin2.indexOf(":") != -1) {
         timeParameter = timeParameter2;
       } else {
-        alert("error! code: 01 \n(Please send an email to yhcho0405@kakao.com)");
+        alert("TimeIndex Error! \n(Please send an email to yhcho0405@kakao.com)");
       }
       chrome.tabs.executeScript({
         code: 'document.querySelector("head").querySelector("title").innerText;'
@@ -61,7 +61,7 @@ if (inYoutube) {
 
                 var resultDiv = document.createElement("div");
 
-                var final = '<div id="title">' + titleFin + '</div><div id="link">' + linkFin + '</div><iframe scrolling="no" id="thumb1" width="120" height="90" src="' + thumbFin + '" frameborder="0" allowfullscreen></iframe>';
+                var final = '<div id="title">' + titleFin + '</div><div id="link">' + linkFin + '</div><div id="wrapper"><img id="thumb1" src="' + thumbFin + '"></div>';
 
                 totalText = totalText + final;
 
@@ -71,14 +71,7 @@ if (inYoutube) {
                   bmkHis: totalText
                 });
               });
-              var delBtn = document.getElementById('btn2');
-              delBtn.addEventListener('click', function(event) {
-                document.getElementById('bmkHistory').innerHTML = "";
-                var clear = "";
-                chrome.storage.sync.set({
-                  bmkHis: clear
-                });
-              });
+
             });
           });
         });
@@ -89,3 +82,13 @@ if (inYoutube) {
     $(".div6").show();
   }
 }
+var delBtn = document.getElementById('btn2');
+delBtn.addEventListener('click', function(event) {
+  document.getElementById('bmkHistory').innerHTML = "";
+  var clear = "";
+  chrome.storage.sync.set({
+    bmkHis: clear
+  });
+});
+
+//'<a href="' + linkFin + '"><div id="title">' + titleFin + '</div></a>' '<a href="' + linkFin + '"><iframe scrolling="no" id="thumb1" width="120" height="90" src="' + thumbFin + '" frameborder="0" allowfullscreen></iframe></a>';
