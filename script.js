@@ -61,7 +61,7 @@ if (inYoutube) {
 
                 var resultDiv = document.createElement("div");
 
-                var final = '<div id="title">' + titleFin + '</div><div id="link">' + linkFin + '</div><div id="wrapper"><img id="thumb1" src="' + thumbFin + '"></div>';
+                var final = '<a href="' + linkFin + '"><div id="title">' + titleFin + '</div></a><div id="link">' + linkFin + '</div><div id="wrapper"><a href="' + linkFin + '"><img id="thumb1" src="' + thumbFin + '"></div></a>';
 
                 totalText = totalText + final;
 
@@ -71,7 +71,6 @@ if (inYoutube) {
                   bmkHis: totalText
                 });
               });
-
             });
           });
         });
