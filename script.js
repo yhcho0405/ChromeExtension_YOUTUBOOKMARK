@@ -1,14 +1,12 @@
 $(".div6").hide();
 if (inYoutube) {
   if (inVideo) {
-    var bmkBtn = document.getElementById('btn1');
-    var delBtn = document.getElementById('btn2');
-    bmkBtn.addEventListener('click', function(event) {
-      var bmkHistory = document.getElementById('bmkHistory');
-      var resultDiv = document.createElement("div");
-      var resultText = '<input type="button" id="btn1" class="button" value="BOOKMARKING!">';
-      resultDiv.appendChild(document.createTextNode(resultText));
-      bmkHistory.insertBefore(resultDiv, bmkHistory.firstChild);
+    var titleFin;
+    var linkFin;
+    var thumbFin;
+    var totalText;
+    chrome.storage.sync.get(function(data) {
+      totalText = data.bmkHis;
     });
     //time
     chrome.tabs.executeScript({
@@ -22,9 +20,9 @@ if (inYoutube) {
       var bodyTimeFin2 = textFin[2] + "s";
       var timeParameter1 = bodyTimeFin1.replace(':', 'm');
       var timeParameter2 = bodyTimeFin2.replace(':', 'm');
-      if (timeParameter1.length == 5 && bodyTimeFin1.indexOf(":") != -1) {
+      if (bodyTimeFin1.indexOf(":") != -1) {
         timeParameter = timeParameter1;
-      } else if (timeParameter2.length == 5 && bodyTimeFin2.indexOf(":") != -1) {
+      } else if (bodyTimeFin2.indexOf(":") != -1) {
         timeParameter = timeParameter2;
       } else {
         alert("error! code: 01 \n(Please send an email to yhcho0405@kakao.com)");
@@ -41,22 +39,49 @@ if (inYoutube) {
           } else {
             titleFin = strTitle.substring(strTitle.indexOf(")") + 2, strTitle.length - 10); //알림이 있을 때
           }
-          //else
-          //{
-          //  titleFin = strTitle.substring(5, strTitle.length - 10); //알림이 두자리 수
-          //}
-          document.querySelector('#title').innerText = titleFin;
-        });
-      });
 
-      chrome.tabs.query({
-        'active': true,
-        'lastFocusedWindow': true,
-        'currentWindow': true
-      }, function(tabs) {
-        var url = tabs[0].url.substring(32, 43);
-        var linkFin = "https://youtu.be/" + url + "?t=" + timeParameter;
-        document.querySelector('#link').innerText = linkFin;
+          chrome.tabs.query({
+            'active': true,
+            'lastFocusedWindow': true,
+            'currentWindow': true
+          }, function(tabs) {
+            var url = tabs[0].url.substring(32, 43);
+            linkFin = "https://youtu.be/" + url + "?t=" + timeParameter;
+
+            chrome.tabs.query({
+              'active': true,
+              'lastFocusedWindow': true,
+              'currentWindow': true
+            }, function(tab) {
+              var url1 = tab[0].url.substring(32, 43);
+              thumbFin = "https://img.youtube.com/vi/" + url1 + "/default.jpg";
+
+              var bmkBtn = document.getElementById('btn1');
+              bmkBtn.addEventListener('click', function(event) {
+
+                var resultDiv = document.createElement("div");
+
+                var final = '<div id="title">' + titleFin + '</div><div id="link">' + linkFin + '</div><iframe scrolling="no" id="thumb1" width="120" height="90" src="' + thumbFin + '" frameborder="0" allowfullscreen></iframe>';
+
+                totalText = totalText + final;
+
+                resultDiv.innerHTML = final;
+                document.getElementById('bmkHistory').append(resultDiv);
+                chrome.storage.sync.set({
+                  bmkHis: totalText
+                });
+              });
+              var delBtn = document.getElementById('btn2');
+              delBtn.addEventListener('click', function(event) {
+                document.getElementById('bmkHistory').innerHTML = "";
+                var clear = "";
+                chrome.storage.sync.set({
+                  bmkHis: clear
+                });
+              });
+            });
+          });
+        });
       });
     });
   } else {
