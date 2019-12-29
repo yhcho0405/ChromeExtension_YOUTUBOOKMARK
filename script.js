@@ -1,13 +1,20 @@
+var totalText;
+var delBtn = document.getElementById('btn2');
+delBtn.addEventListener('click', function(event) {
+  var clear = "";
+  chrome.storage.sync.set({
+    bmkHis: clear
+  });
+  totalText = "";
+  document.getElementById('bmkHistory').innerHTML = clear;
+});
+
 $(".div6").hide();
 if (inYoutube) {
   if (inVideo) {
     var titleFin;
     var linkFin;
     var thumbFin;
-    var totalText;
-    chrome.storage.sync.get(function(data) {
-      totalText = data.bmkHis;
-    });
     //time
     chrome.tabs.executeScript({
       code: 'document.querySelector("body").innerText;'
@@ -18,7 +25,6 @@ if (inYoutube) {
       var textFin = bodyTime.split('\n');
       var bodyTimeFin1 = textFin[1] + "s";
       var bodyTimeFin2 = textFin[2] + "s";
-      alert(textFin[1]);
       var timeParameter1 = bodyTimeFin1.replace(':', 'm');
       var timeParameter2 = bodyTimeFin2.replace(':', 'm');
       if(timeParameter1.indexOf(":") != -1 || timeParameter2.indexOf(":") != -1) {
@@ -32,7 +38,7 @@ if (inYoutube) {
       } else if (bodyTimeFin2.indexOf(":") != -1) {
         timeParameter = timeParameter2;
       } else {
-        alert("TimeIndex Error! \n(Please send an email to yhcho0405@kakao.com)");
+        alert("Time Index Error! \n(Please send an email to yhcho0405@kakao.com)");
       }
       chrome.tabs.executeScript({
         code: 'document.querySelector("head").querySelector("title").innerText;'
@@ -64,6 +70,9 @@ if (inYoutube) {
               thumbFin = "https://img.youtube.com/vi/" + url1 + "/default.jpg";
 
               var bmkBtn = document.getElementById('btn1');
+              chrome.storage.sync.get(function(data) {
+                totalText = data.bmkHis;
+              });
               bmkBtn.addEventListener('click', function(event) {
 
                 var resultDiv = document.createElement("div");
@@ -88,13 +97,5 @@ if (inYoutube) {
     $(".div6").show();
   }
 }
-var delBtn = document.getElementById('btn2');
-delBtn.addEventListener('click', function(event) {
-  var clear = "";
-  chrome.storage.sync.set({
-    bmkHis: clear
-  });
-  document.getElementById('bmkHistory').innerHTML = "";
-});
 
 //'<a href="' + linkFin + '"><div id="title">' + titleFin + '</div></a>' '<a href="' + linkFin + '"><iframe scrolling="no" id="thumb1" width="120" height="90" src="' + thumbFin + '" frameborder="0" allowfullscreen></iframe></a>';
