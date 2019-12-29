@@ -61,7 +61,7 @@ if (inYoutube) {
 
                 var resultDiv = document.createElement("div");
 
-                var final = '<a href="' + linkFin + '"><div id="title">' + titleFin + '</div></a><div id="link">' + linkFin + '</div><div id="wrapper"><a href="' + linkFin + '"><img id="thumb1" src="' + thumbFin + '"></div></a>';
+                var final = '<div id="divv"><div id="title"><a href="' + linkFin + '"target="_blank">' + titleFin + '</a></div><div id="wrapper"><a href="' + linkFin + '" " target="_blank"><img id="thumb1" src="' + thumbFin + '"></div></a></div>';
 
                 totalText = totalText + final;
 
@@ -83,11 +83,11 @@ if (inYoutube) {
 }
 var delBtn = document.getElementById('btn2');
 delBtn.addEventListener('click', function(event) {
-  document.getElementById('bmkHistory').innerHTML = "";
   var clear = "";
   chrome.storage.sync.set({
     bmkHis: clear
   });
+  document.getElementById('bmkHistory').innerHTML = "";
 });
 
 //'<a href="' + linkFin + '"><div id="title">' + titleFin + '</div></a>' '<a href="' + linkFin + '"><iframe scrolling="no" id="thumb1" width="120" height="90" src="' + thumbFin + '" frameborder="0" allowfullscreen></iframe></a>';
