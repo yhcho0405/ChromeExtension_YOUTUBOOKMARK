@@ -17,29 +17,15 @@ if (inYoutube) {
     var thumbFin;
     //time
     chrome.tabs.executeScript({
-      code: 'document.querySelector("body").innerText;'
+      code: 'document.querySelector("body").querySelector(".ytp-time-current").innerText;'
     }, function(result) {
-      var bodyText = result[0];
-      var bodySep = bodyText.split(' ');
-      var bodyTime = bodySep[1];
-      var textFin = bodyTime.split('\n');
-      var bodyTimeFin1 = textFin[1] + "s";
-      var bodyTimeFin2 = textFin[2] + "s";
-      var timeParameter1 = bodyTimeFin1.replace(':', 'm');
-      var timeParameter2 = bodyTimeFin2.replace(':', 'm');
-      if(timeParameter1.indexOf(":") != -1 || timeParameter2.indexOf(":") != -1) {
-        timeParameter1 = timeParameter1.replace('m', 'h');
-        timeParameter2 = timeParameter2.replace('m', 'h');
-        timeParameter1 = timeParameter1.replace(':', 'm');
-        timeParameter2 = timeParameter2.replace(':', 'm');
+      var bodyTimeFin = result + "s";
+      var timeParameter = bodyTimeFin.replace(':', 'm');
+      if(timeParameter.indexOf(":") != -1) {
+        timeParameter = timeParameter.replace('m', 'h');
+        timeParameter = timeParameter.replace(':', 'm');
       }
-      if (bodyTimeFin1.indexOf(":") != -1) {
-        timeParameter = timeParameter1;
-      } else if (bodyTimeFin2.indexOf(":") != -1) {
-        timeParameter = timeParameter2;
-      } else {
-        alert("Time Index Error! \n(Please send an email to yhcho0405@kakao.com)");
-      }
+
       chrome.tabs.executeScript({
         code: 'document.querySelector("head").querySelector("title").innerText;'
       }, function(videoTitle) {
@@ -83,6 +69,7 @@ if (inYoutube) {
 
                 resultDiv.innerHTML = final;
                 document.getElementById('bmkHistory').append(resultDiv);
+
                 chrome.storage.sync.set({
                   bmkHis: totalText
                 });
