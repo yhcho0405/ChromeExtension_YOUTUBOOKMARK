@@ -96,8 +96,6 @@ if (inYoutube) {
                       totalText = data.bmkHis;
                     });
                     var delId = "ddivv" + $(this).attr('id');
-                    var delPara = document.getElementById(delId);
-                    delPara.innerHTML = "";
                     var coo = delId.length + 2;
                     var startIn = totalText.indexOf(delId);
                     var finishIn = totalText.indexOf(delId, startIn + 1);
@@ -106,6 +104,8 @@ if (inYoutube) {
                     chrome.storage.local.set({
                       bmkHis: totalText
                     });
+                    var delPara = document.getElementById(delId);
+                    delPara.innerHTML = "";
                   });
                 });
               });
@@ -123,8 +123,6 @@ if (inYoutube) {
 $(function() {
   $(".button2").click(function() {
     var delId = "ddivv" + $(this).attr('id');
-    var delPara = document.getElementById(delId);
-    delPara.innerHTML = "";
     chrome.storage.local.get(function(data) {
       totalText = data.bmkHis;
     });
@@ -136,6 +134,27 @@ $(function() {
     chrome.storage.local.set({
       bmkHis: totalText
     });
+    var delPara = document.getElementById(delId);
+    delPara.innerHTML = "";
+  });
+});
+
+$(function() {
+  $(".button2").click(function() {
+    var delId = "ddivv" + $(this).attr('id');
+    chrome.storage.local.get(function(data) {
+      totalText = data.bmkHis;
+    });
+    var coo = delId.length + 2;
+    var startIn = totalText.indexOf(delId);
+    var finishIn = totalText.indexOf(delId, startIn + 1);
+    var deleteArr = totalText.substring(startIn + coo, finishIn - 11);
+    totalText = totalText.replace(deleteArr, "");
+    chrome.storage.local.set({
+      bmkHis: totalText
+    });
+    var delPara = document.getElementById(delId);
+    delPara.innerHTML = "";
   });
 });
 
