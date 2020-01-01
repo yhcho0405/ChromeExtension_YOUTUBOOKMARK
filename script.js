@@ -29,11 +29,11 @@ if (inYoutube) {
     }, function(result) {
       var bodyTimeFin = result + "s";
       var timeParameter = bodyTimeFin.replace(':', 'm');
-      if(timeParameter.indexOf(":") != -1) {
+      if (timeParameter.indexOf(":") != -1) {
         timeParameter = timeParameter.replace('m', 'h');
         timeParameter = timeParameter.replace(':', 'm');
       }
-      if(timeParameter.indexOf(":") != -1) {
+      if (timeParameter.indexOf(":") != -1) {
         timeParameter = timeParameter.replace('h', 'd');
         timeParameter = timeParameter.replace('m', 'h');
         timeParameter = timeParameter.replace(':', 'm');
@@ -79,7 +79,7 @@ if (inYoutube) {
                 ttarr = totalText.split('\n');
                 count = ttarr.length;
 
-                var final = '\n<div id="ddivv' + count + '"><div class="divv"><div id="title"><a href="' + linkFin + '"target="_blank">' + titleFin + '</a></div><div id="wrapper"><a href="' + linkFin + '" " target="_blank"><img id="thumb1" src="' + thumbFin + '"></div></a><input type="button" id="' + count + '" class="button2" value="DELETE"></div></div>';
+                var final = '\n<div id="ddivv' + count + '">   <div class="divv"><div id="title"><a href="' + linkFin + '"target="_blank">' + titleFin + '</a></div><div id="wrapper"><a href="' + linkFin + '" " target="_blank"><img id="thumb1" src="' + thumbFin + '"></div></a><input type="button" id="' + count + '" class="button2" value="DELETE"></div>   </div id="ddivv' + count + '">';
 
                 totalText = totalText + final;
                 ttarr = totalText.split('\n');
@@ -89,6 +89,24 @@ if (inYoutube) {
 
                 chrome.storage.local.set({
                   bmkHis: totalText
+                });
+                $(function() {
+                  $(".button2").click(function() {
+                    chrome.storage.local.get(function(data) {
+                      totalText = data.bmkHis;
+                    });
+                    var delId = "ddivv" + $(this).attr('id');
+                    var delPara = document.getElementById(delId);
+                    delPara.innerHTML = "";
+                    var coo = delId.length + 2;
+                    var startIn = totalText.indexOf(delId);
+                    var finishIn = totalText.indexOf(delId, startIn + 1);
+                    var deleteArr = totalText.substring(startIn + coo, finishIn - 11);
+                    totalText = totalText.replace(deleteArr, "");
+                    chrome.storage.local.set({
+                      bmkHis: totalText
+                    });
+                  });
                 });
               });
             });
@@ -104,15 +122,26 @@ if (inYoutube) {
 
 $(function() {
   $(".button2").click(function() {
-    var ggdel = "ddivv" + $(this).attr('id');
-    var delPara = document.getElementById(ggdel);
+    var delId = "ddivv" + $(this).attr('id');
+    var delPara = document.getElementById(delId);
     delPara.innerHTML = "";
+    chrome.storage.local.get(function(data) {
+      totalText = data.bmkHis;
+    });
+    var coo = delId.length + 2;
+    var startIn = totalText.indexOf(delId);
+    var finishIn = totalText.indexOf(delId, startIn + 1);
+    var deleteArr = totalText.substring(startIn + coo, finishIn - 11);
+    totalText = totalText.replace(deleteArr, "");
+    chrome.storage.local.set({
+      bmkHis: totalText
+    });
   });
 });
 
 $(".div5").hide();
 
-if(!inYoutube) {
+if (!inYoutube) {
   $("#btn1").hide();
   $(".div5").show();
 }
