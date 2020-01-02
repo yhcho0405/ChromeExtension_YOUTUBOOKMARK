@@ -73,7 +73,10 @@ if (inYoutube) {
                 totalText = data.bmkHis;
               });
               bmkBtn.addEventListener('click', function(event) {
-
+                if(document.querySelector('#bmkHistory').innerText == "undefined") {
+                  document.getElementById('bmkHistory').innerText = "Is this your first time? \nPress <DELETE ALL> and bookmark it !!";
+                }
+                
                 var resultDiv = document.createElement("div");
 
                 ttarr = totalText.split('\n');
