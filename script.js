@@ -1,4 +1,12 @@
 chrome.storage.local.get(function(data) {
+  if(!data.bmkHis) {
+    chrome.storage.local.set({
+      bmkHis: ""
+    });
+  }
+});
+
+chrome.storage.local.get(function(data) {
   document.getElementById('bmkHistory').innerHTML = data.bmkHis;
 });
 
@@ -76,7 +84,7 @@ if (inYoutube) {
                 if(document.querySelector('#bmkHistory').innerText == "undefined") {
                   document.getElementById('bmkHistory').innerText = "Is this your first time? \nPress <DELETE ALL> and bookmark it !!";
                 }
-                
+
                 var resultDiv = document.createElement("div");
 
                 ttarr = totalText.split('\n');
