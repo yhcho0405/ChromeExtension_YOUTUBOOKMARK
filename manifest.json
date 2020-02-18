@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "YOUTUBOOKMARK",
-  "version": "1.0.1",
+  "name": "YOUTUBOOKMARK (Bookmark, YouTube, watch time)",
+  "version": "1.0.2",
   "description": "It provides a function to bookmark the viewing time while watching YouTube videos.",
   "permissions": [
     "activeTab",
